@@ -1,7 +1,24 @@
+html {
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
 body {
-    background: #aaf0d1;
+    background: #aaf0d0c0;
+    text-align: center;
 }
 
-#header {
-    text-align: center;
+
+#top-activity-title {
+    height: 250px;
+    width: 60%;
+    background: #83bba2;
+    border-radius: 50px;
+}
+
+#top-activity-description {
+    font-size: 15px;
 }

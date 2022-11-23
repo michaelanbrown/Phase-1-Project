@@ -3,22 +3,48 @@ html {
     min-height: 100%;
     width: 100%;
     margin: 0 auto;
-    text-align: center;
   }
+
+#header {
+    text-align: center;
+}  
 
 body {
     background: #aaf0d0c0;
-    text-align: center;
 }
 
 
 #top-activity-title {
-    height: 250px;
+    text-align: center;
+    height: 350px;
     width: 60%;
     background: #83bba2;
     border-radius: 50px;
 }
 
 #top-activity-description {
+    text-align: center;
     font-size: 15px;
+}
+
+#sub-activities {
+    position: relative;
+    left: 4.5%;
+    display: flex;
+    text-align: center;
+    height: 150px;
+    width: 50%;
+    background: #83bba2;
+    border-radius: 50px; 
+    margin: 0px;
+}
+
+.sub-act {
+    width: 50%;
+    text-align: center;
+}
+
+.sub-text {
+    text-align: center;
+    font-size: 12px;
 }

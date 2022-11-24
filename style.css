@@ -52,9 +52,13 @@ body {
 }
 
 button {
+    cursor: pointer;
     border-radius: 25px; 
     position: relative;
-    left: 10%;
     font-size: 25px;
     background-color: #6d9b86;
+}
+
+#random {
+    left: 10%;
 }

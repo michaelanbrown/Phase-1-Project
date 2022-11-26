@@ -79,7 +79,26 @@ randomizer.addEventListener('click', (event) => {
                     oneDesc.setAttribute('id', 'top-activity-description')
                     oneDesc.innerHTML = `Type: ${dataArray[0].type} <br><br> Participants: ${dataArray[0].participants} <br><br> Price: $${dataArray[0].price}`;
                     oneActivity.appendChild(oneDesc);
-                    
+                    twoActivity.innerHTML = `<br>${dataArray[1].activity}`;
+                    let twoDesc = document.createElement('p');
+                    twoDesc.setAttribute('id', 'two-activity-description')
+                    twoDesc.innerHTML = `Type: ${dataArray[1].type} <br><br> Participants: ${dataArray[1].participants} <br><br> Price: $${dataArray[1].price}`;
+                    twoActivity.appendChild(twoDesc);
+                    threeActivity.innerHTML = `<br>${dataArray[2].activity}`;
+                    let threeDesc = document.createElement('p');
+                    threeDesc.setAttribute('id', 'three-activity-description')
+                    threeDesc.innerHTML = `Type: ${dataArray[2].type} <br><br> Participants: ${dataArray[2].participants} <br><br> Price: $${dataArray[2].price}`;
+                    threeActivity.appendChild(threeDesc);
+                    fourActivity.innerHTML = `<br>${dataArray[3].activity}`;
+                    let fourDesc = document.createElement('p');
+                    fourDesc.setAttribute('id', 'four-activity-description')
+                    fourDesc.innerHTML = `Type: ${dataArray[3].type} <br><br> Participants: ${dataArray[3].participants} <br><br> Price: $${dataArray[3].price}`;
+                    fourActivity.appendChild(fourDesc);
+                    fiveActivity.innerHTML = `<br>${dataArray[4].activity}`;
+                    let fiveDesc = document.createElement('p');
+                    fiveDesc.setAttribute('id', 'five-activity-description')
+                    fiveDesc.innerHTML = `Type: ${dataArray[4].type} <br><br> Participants: ${dataArray[4].participants} <br><br> Price: $${dataArray[4].price}`;
+                    fiveActivity.appendChild(fiveDesc);
                     })    
                 })
             }) 

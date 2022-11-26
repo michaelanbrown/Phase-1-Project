@@ -1,4 +1,8 @@
 let oneActivity = document.getElementById('top-activity-title')
+let twoActivity = document.getElementById('two-activity')
+let threeActivity = document.getElementById('three-activity')
+let fourActivity = document.getElementById('four-activity')
+let fiveActivity = document.getElementById('five-activity')
 let randomizer = document.getElementById('random')
 let subActivities = document.getElementsByClassName('sub-act')
 
@@ -75,6 +79,7 @@ randomizer.addEventListener('click', (event) => {
                     oneDesc.setAttribute('id', 'top-activity-description')
                     oneDesc.innerHTML = `Type: ${dataArray[0].type} <br><br> Participants: ${dataArray[0].participants} <br><br> Price: $${dataArray[0].price}`;
                     oneActivity.appendChild(oneDesc);
+                    
                     })    
                 })
             }) 

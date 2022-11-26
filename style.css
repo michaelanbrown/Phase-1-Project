@@ -68,3 +68,12 @@ button {
     position: relative;
     text-align: center;
 }
+
+#comment-header {
+    font-size: 20px;
+}
+
+.commentSection {
+    font-size: 15px;
+    font-weight: normal;
+}

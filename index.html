@@ -9,7 +9,7 @@
     </div>
   </head>
   <body>
-    <form action="http://localhost:3000/articles" id="form" method="POST">
+    <form id="form">
         <h3>Provide your feedback!</h3>
         <label for="name">Name:</label>
         <input type="text" name="Name" placeholder="Name"/>
@@ -20,7 +20,7 @@
         <br>
         <br>
         <label for="activity-type">Activity Type:</label>
-        <input type="text" name="Activity-type" placeholder="Activity Type">
+        <input type="text" name="Activity_Type" placeholder="Activity Type">
         <br>
         <br>
         <label for="mood">Mood During the Activity:</label>
@@ -30,8 +30,12 @@
         <label for="time">Time to Complete Activity:</label>
         <input type="text" name="Time" placeholder="Time">
         <br>
-        <p id="comments">Extra Comments: <textarea id="text-comments" name="message" placeholder="Comments"></textarea></p>
-        <button type="submit">Submit!</button>
+        <p id="comments">Extra Comments: <textarea id="text-comments" name="Comments" placeholder="Comments"></textarea></p>
+        <button type="submit" id="submit">Submit!</button>
+        <br>
+        <br>
+        <br>
+        <h4 id="comment-header">Comments:</h4>
     </form>
     <h2 id="top-activity-title"></h2>
     <div id="sub-activities">

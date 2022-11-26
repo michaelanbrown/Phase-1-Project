@@ -5,6 +5,8 @@ let fourActivity = document.getElementById('four-activity')
 let fiveActivity = document.getElementById('five-activity')
 let randomizer = document.getElementById('random')
 let subActivities = document.getElementsByClassName('sub-act')
+let submit = document.getElementById('submit')
+let submittedCommentHeader = document.getElementById('comment-header')
 
 randomizer.addEventListener('click', (event) => {
     let dataArray = [];
@@ -103,3 +105,58 @@ randomizer.addEventListener('click', (event) => {
         })   
     })
 })
+
+submit.addEventListener('submit', handleComments)
+
+function handleComments(e) {
+    e.preventDefault();
+    let commentObj = {
+        Name: e.target.Name.value,
+        Activity: e.target.Activity.value,
+        Activity_Type: e.target.Activity_Type.value,
+        Mood: e.target.Mood.value,
+        Time: e.target.Time.value,
+        Comments: e.target.Comments.value
+      }
+      renderComment(commentObj)
+      submitting(commentObj)
+}
+
+function renderComment(comment) {
+    let commentSection = document.createElement('p')
+    commentSection.className = 'commentSection'
+    commentSection.innerHTML = `Name: ${comment.Name}
+    <br>
+    Activity: ${comment.Activity}
+    <br>
+    Activity Type: ${comment.Activity_Type}
+    <br>
+    Mood During Activity: ${comment.Mood}
+    <br>
+    Time to Complete the Activity: ${comment.Time}
+    <br>
+    Extra Comments: ${comment.Comments}`
+    submittedCommentHeader.appendChild(commentSection)
+}
+
+function getAllComments() {
+    fetch('http://localhost:3000/comments')
+    .then(res => res.json())
+    .then(commentdata => commentdata.forEach(comment => renderComment(comment)))
+}
+
+function submitting(commentObj) {
+    fetch('http://localhost:3000/comments', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(commentObj)
+    })
+    .then( res => res.json())
+}
+
+function initialize() {
+    getAllComments()
+}
+initialize()

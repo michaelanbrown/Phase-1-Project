@@ -51,6 +51,18 @@ randomizer.addEventListener('click', (event) => {
                     dataArray = dataArray.map(function(element) {
                         return {activity: element.activity, type: element.type, participants: element.participants, price: element.price*10}
                     })
+                    dataArray = dataArray.map(function(element) {
+                        let elementType;
+                        if (element.type === 'diy') {
+                            elementType = element.type.toUpperCase();
+                        } else if (element.type !== 'diy') {
+                            let elementTypeUpper = element.type[0]
+                            elementTypeUpper = elementTypeUpper.toUpperCase();
+                            let elementTypeLower = element.type.slice(1);
+                            elementType = elementTypeUpper + elementTypeLower
+                        }
+                        return {activity: element.activity, type: elementType, participants: element.participants, price: element.price}
+                    })
                     console.log(dataArray)
                     oneActivity.innerHTML = `<br>${dataArray[0].activity}`;
                     let oneDesc = document.createElement('p');

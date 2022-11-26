@@ -5,10 +5,11 @@ let fourActivity = document.getElementById('four-activity')
 let fiveActivity = document.getElementById('five-activity')
 let randomizer = document.getElementById('random')
 let subActivities = document.getElementsByClassName('sub-act')
-let submit = document.getElementById('submit')
+let submitButton = document.getElementById('submit')
 let submittedCommentHeader = document.getElementById('comment-header')
 
 randomizer.addEventListener('click', (event) => {
+    event.preventDefault();
     let dataArray = [];
     //fetch the data 5 times and push to an array
     fetch("https://www.boredapi.com/api/activity")
@@ -106,21 +107,19 @@ randomizer.addEventListener('click', (event) => {
     })
 })
 
-submit.addEventListener('submit', handleComments)
-
-function handleComments(e) {
-    e.preventDefault();
+submitButton.addEventListener('submit', (event) => {
+    event.preventDefault();
     let commentObj = {
-        Name: e.target.Name.value,
-        Activity: e.target.Activity.value,
-        Activity_Type: e.target.Activity_Type.value,
-        Mood: e.target.Mood.value,
-        Time: e.target.Time.value,
-        Comments: e.target.Comments.value
-      }
-      renderComment(commentObj)
-      submitting(commentObj)
-}
+        Name: event.target.Name.value,
+        Activity: event.target.Activity.value,
+        Activity_Type: event.target.Activity_Type.value,
+        Mood: event.target.Mood.value,
+        Time: event.target.Time.value,
+        Comments: event.target.Comments.value
+  }
+  renderComment(commentObj)
+  submitting(commentObj)
+})
 
 function renderComment(comment) {
     let commentSection = document.createElement('p')
@@ -142,18 +141,19 @@ function renderComment(comment) {
 function getAllComments() {
     fetch('http://localhost:3000/comments')
     .then(res => res.json())
-    .then(commentdata => commentdata.forEach(comment => renderComment(comment)))
+    .then(commentData => commentData.forEach(comment => renderComment(comment)))
 }
 
 function submitting(commentObj) {
     fetch('http://localhost:3000/comments', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
         },
         body: JSON.stringify(commentObj)
     })
-    .then( res => res.json())
+    .then(res => res.json())
 }
 
 function initialize() {

@@ -1,0 +1,20 @@
+{
+    "articles": [
+        {
+            "Name": "Michaela",
+            "Activity": "Listen to a new music genre",
+            "Activity Type": "Music",
+            "Mood During Activity": "Happy",
+            "Amount of Time to Complete Activity": "10 minutes",
+            "Extra Comments": "It's nice to allow yourself some space to focus on the words and the melodies"
+        },
+        {
+            "Name": "Phoenix",
+            "Activity": "Go on a long drive with no music",
+            "Activity Type": "Relaxation",
+            "Mood During Activity": "Excited",
+            "Amount of Time to Complete Activity": "30 minutes",
+            "Extra Comments": "This is awesome!! I get to go on a ride and look at the trees and things happening around me"
+        }
+    ]
+}

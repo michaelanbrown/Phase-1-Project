@@ -8,6 +8,7 @@ let subActivities = document.getElementsByClassName('sub-act')
 
 randomizer.addEventListener('click', (event) => {
     let dataArray = [];
+    //fetch the data 5 times and push to an array
     fetch("https://www.boredapi.com/api/activity")
 .then(function (res) {
     return res.json();
@@ -48,22 +49,29 @@ randomizer.addEventListener('click', (event) => {
                 dataArray.push(data)
                     }) 
                 .then(function(data) {
+                    //map the dataArray to multiply the price by 10 --> this makes the price more accurate
                     dataArray = dataArray.map(function(element) {
                         return {activity: element.activity, type: element.type, participants: element.participants, price: element.price*10}
                     })
+                    //second map on the dataArray to capitalize the activity type 
                     dataArray = dataArray.map(function(element) {
                         let elementType;
+                        //if activity type is diy capitalize the entire type
                         if (element.type === 'diy') {
                             elementType = element.type.toUpperCase();
+                            //else capitalize only the first letter of the activity type
                         } else if (element.type !== 'diy') {
+                            //split activity type into two variables - first letter and the rest of the word
                             let elementTypeUpper = element.type[0]
+                            //upper case first letter
                             elementTypeUpper = elementTypeUpper.toUpperCase();
                             let elementTypeLower = element.type.slice(1);
+                            //add the two variables together to get the capitalized word
                             elementType = elementTypeUpper + elementTypeLower
                         }
                         return {activity: element.activity, type: elementType, participants: element.participants, price: element.price}
                     })
-                    console.log(dataArray)
+                    //set the innerHTML of the activity name and description for each of the 5 activities
                     oneActivity.innerHTML = `<br>${dataArray[0].activity}`;
                     let oneDesc = document.createElement('p');
                     oneDesc.setAttribute('id', 'top-activity-description')

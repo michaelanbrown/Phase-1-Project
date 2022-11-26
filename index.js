@@ -5,7 +5,7 @@ let fourActivity = document.getElementById('four-activity')
 let fiveActivity = document.getElementById('five-activity')
 let randomizer = document.getElementById('random')
 let subActivities = document.getElementsByClassName('sub-act')
-let submitButton = document.getElementById('submit')
+let submitButton = document.getElementById('form')
 let submittedCommentHeader = document.getElementById('comment-header')
 
 randomizer.addEventListener('click', (event) => {
@@ -117,6 +117,7 @@ submitButton.addEventListener('submit', (event) => {
         Time: event.target.Time.value,
         Comments: event.target.Comments.value
   }
+  event.target.reset();
   renderComment(commentObj)
   submitting(commentObj)
 })

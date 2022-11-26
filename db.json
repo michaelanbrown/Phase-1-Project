@@ -1,13 +1,40 @@
 {
-    "comments": [
-        {
-            "id": 1,
-            "Name": "Anonymous",
-            "Activity": "Listen to a new music genre",
-            "Activity_Type": "Music",
-            "Mood": "Happy",
-            "Time": "10 minutes",
-            "Comments": "Awesome!"
-        }
-    ]
+  "comments": [
+    {
+      "id": 1,
+      "Name": "Anonymous",
+      "Activity": "Listen to a new music genre",
+      "Activity_Type": "Music",
+      "Mood": "Happy",
+      "Time": "10 minutes",
+      "Comments": "Awesome!"
+    },
+    {
+      "Name": "Michaela",
+      "Activity": "Learn how to french braid hair",
+      "Activity_Type": "Education",
+      "Mood": "Happy",
+      "Time": "5 minutes",
+      "Comments": "Fun!",
+      "id": 2
+    },
+    {
+      "Name": "Anonymous",
+      "Activity": "Go to a concert with some friends",
+      "Activity_Type": "Social",
+      "Mood": "Excited",
+      "Time": "3 hours",
+      "Comments": "Concerts make me so energetic!",
+      "id": 3
+    },
+    {
+      "Name": "Phoenix",
+      "Activity": "Pick up litter around your favorite park",
+      "Activity_Type": "Charity",
+      "Mood": "",
+      "Time": "15 minutes",
+      "Comments": "I LOVE THE PARK!",
+      "id": 4
+    }
+  ]
 }

@@ -30,11 +30,11 @@ body {
 
 #sub-activities {
     position: relative;
-    left: 4.5%;
+    left: 2.3%;
     display: flex;
     text-align: center;
     height: 175px;
-    width: 50%;
+    width: 55%;
     background: #83bba2;
     border-radius: 50px; 
     margin: 0px;

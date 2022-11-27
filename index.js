@@ -111,8 +111,10 @@ randomizer.addEventListener('click', (event) => {
     })
 })
 
+//Submit button will capture data from the form
 submitButton.addEventListener('submit', (event) => {
     event.preventDefault();
+    //put data into an object
     let commentObj = {
         Name: event.target.Name.value,
         Activity: event.target.Activity.value,
@@ -121,14 +123,20 @@ submitButton.addEventListener('submit', (event) => {
         Time: event.target.Time.value,
         Comments: event.target.Comments.value
   }
+  //the form will be reset once the submit button is pressed
   event.target.reset();
+  //render the comment to the DOM
   renderComment(commentObj)
+  //add the comment to our db.json
   submitting(commentObj)
 })
 
 function renderComment(comment) {
+    //create an element that can be appended to the DOM
     let commentSection = document.createElement('p')
+    //give the element a classname
     commentSection.className = 'commentSection'
+    //set the innerHTML of the element
     commentSection.innerHTML = `Name: ${comment.Name}
     <br>
     Activity: ${comment.Activity}
@@ -140,16 +148,20 @@ function renderComment(comment) {
     Time to Complete the Activity: ${comment.Time}
     <br>
     Extra Comments: ${comment.Comments}`
+    //append element to the DOM
     submittedCommentHeader.appendChild(commentSection)
 }
 
 function getAllComments() {
+    //fetch all comment data
     fetch('http://localhost:3000/comments')
     .then(res => res.json())
+    //render the comments to the DOM
     .then(commentData => commentData.forEach(comment => renderComment(comment)))
 }
 
 function submitting(commentObj) {
+    //add new comments to db.json
     fetch('http://localhost:3000/comments', {
         method: 'POST',
         headers: {
@@ -161,30 +173,43 @@ function submitting(commentObj) {
     .then(res => res.json())
 }
 
+//initialize comments to display
 function initialize() {
     getAllComments()
 }
 initialize()
 
+//remove children nodes so that we may filter for specific values
 function removeChildren(parent) {
+    //while the parent has a child
     while (parent.firstChild) {
+        //continue to remove the child until all are gone
         parent.removeChild(parent.firstChild);
     }
 }
 
 commentFilter.addEventListener('change', (result) => {
+    //remove all children
     removeChildren(submittedCommentHeader)
+    //if we are default filtering then show all comments
     if (result.target.value === '') {
+        //fetch all comments from db.json
         fetch('http://localhost:3000/comments')
         .then(res => res.json())
+        //render comments to the DOM
         .then(commentData => commentData.forEach(comment => renderComment(comment)))
+        //else if not filtering from a default value
     } else if (result.target.value !== '') {
         let filteredArray = [];
+        //fetch data from db.json
         fetch('http://localhost:3000/comments')
         .then(res => res.json())
         .then(data => {
+            //for each piece of data
             for (let each in data) {
+                //if the activity type is what is being filtered for
                 if (data[each].Activity_Type === result.target.value) {
+                    //render that comment to the DOM
                     renderComment(data[each])
                 }
             }    
@@ -194,12 +219,19 @@ commentFilter.addEventListener('change', (result) => {
 
 completeCheckbox.addEventListener('change', (event) => {
     console.log(event)
+    //if our completed checkbox is checked
     if (event.target.checked) {
+        //crete a div to store an image tag
         let img = document.createElement('div')
+        //give our tag an id
         img.setAttribute('id', 'img')
+        //set the innerHTML to our congratulations gif
         img.innerHTML = "<br><img src='https://media0.giphy.com/media/ZhvduEq5hWKYsmhRAJ/giphy.gif' alt='Congratulations!'>"
+        //appendChild to DOM
         interactionBar.appendChild(img)
+        //else if our completed ccheckbox is not checked
     } else if (event.target.checked === false) {
+        //remove the img tag
         interactionBar.removeChild(interactionBar.lastChild)
     }
 })

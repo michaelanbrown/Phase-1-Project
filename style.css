@@ -77,3 +77,17 @@ button {
     font-size: 15px;
     font-weight: normal;
 }
+
+#filter-header {
+    float: right;
+    position: relative;
+    left: 10%;
+    margin-top: 21.25%
+}
+
+#filter {
+    float: right;
+    position: relative;
+    left: 16%;;
+    margin-top: 22.5%
+}

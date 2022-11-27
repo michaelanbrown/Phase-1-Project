@@ -8,6 +8,9 @@ let subActivities = document.getElementsByClassName('sub-act')
 let submitButton = document.getElementById('form')
 let submittedCommentHeader = document.getElementById('comment-header')
 let commentFilter = document.getElementById('filter')
+let completeCheckbox = document.getElementById('checkbox')
+let activities = document.getElementById('activities')
+let interactionBar = document.getElementById('interaction')
 
 randomizer.addEventListener('click', (event) => {
     event.preventDefault();
@@ -186,5 +189,17 @@ commentFilter.addEventListener('change', (result) => {
                 }
             }    
         })
+    }
+})
+
+completeCheckbox.addEventListener('change', (event) => {
+    console.log(event)
+    if (event.target.checked) {
+        let img = document.createElement('div')
+        img.setAttribute('id', 'img')
+        img.innerHTML = "<br><img src='https://media0.giphy.com/media/ZhvduEq5hWKYsmhRAJ/giphy.gif' alt='Congratulations!'>"
+        interactionBar.appendChild(img)
+    } else if (event.target.checked === false) {
+        interactionBar.removeChild(interactionBar.lastChild)
     }
 })

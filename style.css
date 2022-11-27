@@ -95,7 +95,17 @@ button {
 #checkbox {
     float: left;
     position: relative;
-    left: 30%;
+    left: 12%;
     margin-top: -1.4%;
     font-size: 20px
+}
+
+#img {
+    text-align: center;
+    position: relative;
+    left: -3.5%
+}
+
+#activities {
+    text-align: center;
 }

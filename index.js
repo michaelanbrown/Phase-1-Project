@@ -170,29 +170,35 @@ function removeChildren(parent) {
 }
 
 commentFilter.addEventListener('change', (result) => {
-    removeChildren(submittedCommentHeader)
-    let filteredArray = [];
-    fetch('http://localhost:3000/comments')
-    .then(res => res.json())
-    .then(data => {
-        for (let each in data) {
-            if (data[each].Activity_Type === result.target.value) {
-                let filteredComment = document.createElement('p')
-                let filteredText = `Name: ${data[each].Name}
-                <br>
-                Activity: ${data[each].Activity}
-                <br>
-                Activity Type: ${data[each].Activity_Type}
-                <br>
-                Mood During Activity: ${data[each].Mood}
-                <br>
-                Time to Complete the Activity: ${data[each].Time}
-                <br>
-                Extra Comments: ${data[each].Comments}`;
-                filteredComment.className = 'commentSection'
-                filteredComment.innerHTML = filteredText
-                submittedCommentHeader.appendChild(filteredComment)
-            }
-        }
-    })
+    if (result.target.value === '') {
+        fetch('http://localhost:3000/comments')
+        .then(res => res.json())
+        .then(commentData => commentData.forEach(comment => renderComment(comment)))
+    } else if (result.target.value !== '') {
+        removeChildren(submittedCommentHeader)
+        let filteredArray = [];
+        fetch('http://localhost:3000/comments')
+        .then(res => res.json())
+        .then(data => {
+            for (let each in data) {
+                if (data[each].Activity_Type === result.target.value) {
+                    let filteredComment = document.createElement('p')
+                    let filteredText = `Name: ${data[each].Name}
+                    <br>
+                    Activity: ${data[each].Activity}
+                    <br>
+                    Activity Type: ${data[each].Activity_Type}
+                    <br>
+                    Mood During Activity: ${data[each].Mood}
+                    <br>
+                    Time to Complete the Activity: ${data[each].Time}
+                    <br>
+                    Extra Comments: ${data[each].Comments}`;
+                    filteredComment.className = 'commentSection'
+                    filteredComment.innerHTML = filteredText
+                    submittedCommentHeader.appendChild(filteredComment)
+                }
+            }    
+        })
+    }
 })

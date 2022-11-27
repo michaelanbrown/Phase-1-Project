@@ -229,7 +229,7 @@ completeCheckbox.addEventListener('change', (event) => {
         img.innerHTML = "<br><img src='https://media0.giphy.com/media/ZhvduEq5hWKYsmhRAJ/giphy.gif' alt='Congratulations!'>"
         //appendChild to DOM
         interactionBar.appendChild(img)
-        //else if our completed ccheckbox is not checked
+        //else if our completed checkbox is not checked
     } else if (event.target.checked === false) {
         //remove the img tag
         interactionBar.removeChild(interactionBar.lastChild)

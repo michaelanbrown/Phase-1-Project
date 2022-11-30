@@ -22,6 +22,10 @@ let dataArray =[];
 //We will append our newly created p tag to the parent, which holds our activity name as stated in line 19
 randomizer.addEventListener('click', (event) => {
     event.preventDefault();
+    randomizerData();
+})
+
+function randomizerData() {
     let dataArray = [];
     //fetch the data 5 times and push to an array
     fetch("https://www.boredapi.com/api/activity")
@@ -117,6 +121,28 @@ randomizer.addEventListener('click', (event) => {
             })
         })  
     })
+}
+
+
+//Submit button will capture data from the form and put it into an object with approporiate key names
+//The form will be reset once the submit button has been pressed, then we will call the renderComment and submitting functions
+submitButton.addEventListener('submit', (event) => {
+    event.preventDefault();
+    //put data into an object
+    let commentObj = {
+        Name: event.target.Name.value,
+        Activity: event.target.Activity.value,
+        Activity_Type: event.target.Activity_Type.value,
+        Mood: event.target.Mood.value,
+        Time: event.target.Time.value,
+        Comments: event.target.Comments.value
+  }
+  //the form will be reset once the submit button is pressed
+  event.target.reset();
+  //render the comment to the DOM
+  renderComment(commentObj)
+  //add the comment to our db.json
+  submitting(commentObj)
 })
 
 

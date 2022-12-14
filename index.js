@@ -233,30 +233,53 @@ function removeChildren(parent) {
 //we remove all child nodes so that we may then change all of what is displayed to the DOM in the comment section
 //if the filter is in its default stage being blank (''), then we will call getAllComments(), which will display all comments to the DOM
 //if the filter has a different value selected, then we will fetch the data for that activity type from the dom and use the renderComment function to display them to the DOM
+// commentFilter.addEventListener('change', (result) => {
+//     //remove all children
+//     removeChildren(submittedCommentHeader)
+//     //if we are default filtering then show all comments
+//     if (result.target.value === '') {
+//         //fetch all comments from db.json
+//         getAllComments();
+//         //else if not filtering from a default value
+//     } else if (result.target.value !== '') {
+//         //fetch data from db.json
+//         fetch('http://localhost:3000/comments')
+//         .then(res => res.json())
+//         .then(data => {
+//             //for each piece of data
+//             for (let each in data) {
+//                 //if the activity type is what is being filtered for
+//                 if (data[each].Activity_Type === result.target.value) {
+//                     //render that comment to the DOM
+//                     renderComment(data[each])
+//                 }
+//             }    
+//         })
+//     }
+// })
+
 commentFilter.addEventListener('change', (result) => {
-    //remove all children
+    //remove children of parent
     removeChildren(submittedCommentHeader)
-    //if we are default filtering then show all comments
-    if (result.target.value === '') {
-        //fetch all comments from db.json
-        getAllComments();
-        //else if not filtering from a default value
-    } else if (result.target.value !== '') {
-        let filteredArray = [];
-        //fetch data from db.json
-        fetch('http://localhost:3000/comments')
-        .then(res => res.json())
-        .then(data => {
-            //for each piece of data
-            for (let each in data) {
-                //if the activity type is what is being filtered for
-                if (data[each].Activity_Type === result.target.value) {
-                    //render that comment to the DOM
-                    renderComment(data[each])
-                }
-            }    
-        })
-    }
+    //fetch dat from db.json
+    fetch('http://localhost:3000/comments')
+    .then(res => res.json())
+    .then(data => {
+        //if the default filter of blank is what we are filtering for
+        if (result.target.value === '') {
+            //render all comments to the DOM
+            getAllComments();
+            //else (if not blank)
+        } else {
+            //filter for the acitivity type based off of what we are filtering for 
+            let dataFilter = data.filter(element => element.Activity_Type === result.target.value)
+            //for each element in the new dataFilter
+            for (let each in dataFilter) {
+                //render those comments to the DOM
+                renderComment(dataFilter[each])
+            }
+        }
+    })
 })
 
 //If our checkbox is pressed, then we will create a div element, give it an id, and set the innerHTML to be an img tag with our congratulations gif

@@ -76,6 +76,7 @@ button {
 .commentSection {
     font-size: 15px;
     font-weight: normal;
+    margin: 0px;
 }
 
 #filter-header {

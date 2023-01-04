@@ -176,6 +176,16 @@ function renderComment(comment) {
     //give the element a classname
     commentSection.className = 'commentSection'
     //set the innerHTML of the element
+    let commentSplit = comment.Comments.split(" ");
+    let commentSplitOne = commentSplit.slice(0,10);
+    let commentSplitTwo = commentSplit.slice(10,20);
+    let commentSplitThree = commentSplit.slice(20,30);
+    let commentSplitFour = commentSplit.slice(30,40);
+    let commentSplitFive = commentSplit.slice(40,50)
+    let commentJoinOne = commentSplitOne.join(' ');
+    let commentJoinTwo = commentSplitTwo.join(' ');
+    let commentJoinThree = commentSplitThree.join(' ');
+    let commentJoinFour = commentSplitFour.join(' ')
     commentSection.innerHTML = `Name: ${comment.Name}
     <br>
     Activity: ${comment.Activity}
@@ -186,7 +196,15 @@ function renderComment(comment) {
     <br>
     Time to Complete the Activity: ${comment.Time}
     <br>
-    Extra Comments: ${comment.Comments}`
+    Extra Comments: ${commentJoinOne}
+    <br>
+    ${commentJoinTwo}
+    <br>
+    ${commentJoinThree}
+    <br>
+    ${commentJoinFour}
+    <br>
+    ${commentSplitFive}`
     //append element to the DOM
     submittedCommentHeader.appendChild(commentSection)
 }
@@ -194,7 +212,7 @@ function renderComment(comment) {
 //getAllComments will fetch all submitted comments, which are housed in our db.json file and will render each comment to the DOM for viewing
 function getAllComments() {
     //fetch all comment data
-    fetch('https://mars-activity-randomizer.glitch.me/comments')
+    fetch('http://localhost:3000/comments')
     .then(res => res.json())
     //render the comments to the DOM
     .then(commentData => commentData.forEach(comment => renderComment(comment)))
@@ -203,7 +221,7 @@ function getAllComments() {
 //submitting will create a POST request to our db.json file for new comments to house and store them so that they can be grabbed from the file and displayed on the DOM
 function submitting(commentObj) {
     //add new comments to db.json
-    fetch('https://mars-activity-randomizer.glitch.me/comments', {
+    fetch('http://localhost:3000/comments', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -262,7 +280,7 @@ commentFilter.addEventListener('change', (result) => {
     //remove children of parent
     removeChildren(submittedCommentHeader)
     //fetch dat from db.json
-    fetch('https://mars-activity-randomizer.glitch.me/comments')
+    fetch('http://localhost:3000/comments')
     .then(res => res.json())
     .then(data => {
         //if the default filter of blank is what we are filtering for

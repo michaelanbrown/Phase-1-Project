@@ -37,31 +37,13 @@
       "id": 4
     },
     {
-      "Name": "Bob",
-      "Activity": "Write a song",
-      "Activity_Type": "Music",
-      "Mood": "Blocked",
-      "Time": "Still not done",
-      "Comments": "Writing a song is hard and needs a lot of inspiration",
-      "id": 5
-    },
-    {
-      "Name": "Anonymous",
-      "Activity": "Organize your dresser",
+      "Name": "Jonathan",
+      "Activity": "Clean out refrigerator",
       "Activity_Type": "Busywork",
-      "Mood": "Happy and Organized",
-      "Time": "30 minutes",
-      "Comments": "I feel very organized and have a more clear headspace",
-      "id": 6
-    },
-    {
-      "Name": "Michaela",
-      "Activity": "Learn how to beatbox",
-      "Activity_Type": "Recreational",
-      "Mood": "Energetic",
+      "Mood": "Positive",
       "Time": "5 minutes",
-      "Comments": "I had a lot of fun with beatboxing!",
-      "id": 7
+      "Comments": "Pretty unique task that I would not have thought of on my own. Thank you. Luckily I’m poor and can’t really afford to put anything in my fridge so it was already pretty darn clean.",
+      "id": 5
     }
   ]
 }

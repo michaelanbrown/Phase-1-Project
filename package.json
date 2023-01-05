@@ -1,7 +1,0 @@
-{"scripts" : 
-        {
-        "test": "mocha",
-        "build": "bable -d lib src",
-        "prepublish": "babel -d lib src"
-        }
-}

@@ -181,11 +181,25 @@ function renderComment(comment) {
     let commentSplitTwo = commentSplit.slice(10,20);
     let commentSplitThree = commentSplit.slice(20,30);
     let commentSplitFour = commentSplit.slice(30,40);
-    let commentSplitFive = commentSplit.slice(40,50)
+    let commentSplitFive = commentSplit.slice(40,50);
+    let commentSplitSix = commentSplit.slice(50,60);
+    let commentSplitSeven = commentSplit.slice(60,70);
+    let commentSplitEight = commentSplit.slice(70,80)
     let commentJoinOne = commentSplitOne.join(' ');
     let commentJoinTwo = commentSplitTwo.join(' ');
     let commentJoinThree = commentSplitThree.join(' ');
-    let commentJoinFour = commentSplitFour.join(' ')
+    let commentJoinFour = commentSplitFour.join(' ');
+    let commentJoinFive = commentSplitFive.join(' ');
+    let commentJoinSix = commentSplitSix.join(' ');
+    let commentJoinSeven = commentSplitSeven.join(' ');
+    let commentJoinEight = commentSplitEight.join(' ')
+    let commentationTwo = `${commentJoinTwo} <br>`
+    let commentationThree = `${commentJoinThree} <br>`
+    let commentationFour = `${commentJoinFour} <br>`
+    let commentationFive = `${commentJoinFive} <br>`
+    let commentationSix = `${commentJoinSix} <br>`
+    let commentationSeven = `${commentJoinSeven} <br>`
+    let commentationEight = `${commentJoinEight} <br>`
     commentSection.innerHTML = `Name: ${comment.Name}
     <br>
     Activity: ${comment.Activity}
@@ -198,13 +212,15 @@ function renderComment(comment) {
     <br>
     Extra Comments: ${commentJoinOne}
     <br>
-    ${commentJoinTwo}
+    ${commentJoinTwo ? commentationTwo : ""}
+    ${commentJoinThree ? commentationThree : ""}
+    ${commentJoinFour ? commentationFour : ""}
+    ${commentJoinFive ? commentationFive : ""}
+    ${commentJoinSix ? commentationSix : ""}
+    ${commentJoinSeven ? commentationSeven : ""}
+    ${commentJoinEight ? commentationEight : ""}
     <br>
-    ${commentJoinThree}
-    <br>
-    ${commentJoinFour}
-    <br>
-    ${commentSplitFive}`
+    <br>`
     //append element to the DOM
     submittedCommentHeader.appendChild(commentSection)
 }
@@ -212,7 +228,7 @@ function renderComment(comment) {
 //getAllComments will fetch all submitted comments, which are housed in our db.json file and will render each comment to the DOM for viewing
 function getAllComments() {
     //fetch all comment data
-    fetch('https://mars-activity-randomizer.glitch.me/comments')
+    fetch('http://localhost:3000/comments')
     .then(res => res.json())
     //render the comments to the DOM
     .then(commentData => commentData.forEach(comment => renderComment(comment)))
@@ -221,7 +237,7 @@ function getAllComments() {
 //submitting will create a POST request to our db.json file for new comments to house and store them so that they can be grabbed from the file and displayed on the DOM
 function submitting(commentObj) {
     //add new comments to db.json
-    fetch('https://mars-activity-randomizer.glitch.me/comments', {
+    fetch('http://localhost:3000/comments', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -280,7 +296,7 @@ commentFilter.addEventListener('change', (result) => {
     //remove children of parent
     removeChildren(submittedCommentHeader)
     //fetch dat from db.json
-    fetch('https://mars-activity-randomizer.glitch.me/comments')
+    fetch('http://localhost:3000/comments')
     .then(res => res.json())
     .then(data => {
         //if the default filter of blank is what we are filtering for

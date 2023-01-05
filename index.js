@@ -228,7 +228,7 @@ function renderComment(comment) {
 //getAllComments will fetch all submitted comments, which are housed in our db.json file and will render each comment to the DOM for viewing
 function getAllComments() {
     //fetch all comment data
-    fetch('http://localhost:3000/comments')
+    fetch('https://mars-michaelas-activity-randomizer.onrender.com/comments')
     .then(res => res.json())
     //render the comments to the DOM
     .then(commentData => commentData.forEach(comment => renderComment(comment)))
@@ -237,7 +237,7 @@ function getAllComments() {
 //submitting will create a POST request to our db.json file for new comments to house and store them so that they can be grabbed from the file and displayed on the DOM
 function submitting(commentObj) {
     //add new comments to db.json
-    fetch('http://localhost:3000/comments', {
+    fetch('https://mars-michaelas-activity-randomizer.onrender.com/comments', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -296,7 +296,7 @@ commentFilter.addEventListener('change', (result) => {
     //remove children of parent
     removeChildren(submittedCommentHeader)
     //fetch dat from db.json
-    fetch('http://localhost:3000/comments')
+    fetch('https://mars-michaelas-activity-randomizer.onrender.com/comments')
     .then(res => res.json())
     .then(data => {
         //if the default filter of blank is what we are filtering for
